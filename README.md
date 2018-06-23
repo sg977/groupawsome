@@ -1,2 +1,0 @@
-# groupawsome
-project 1

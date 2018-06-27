@@ -1,0 +1,48 @@
+body, html {
+    height: 100%;
+    background-color: gray;
+}
+.bg {
+    /* The image used */
+    background-image: url("../images/skyline-01-new-york-city.jpg");
+
+    /* Full height */
+    height: 50%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#title {
+    font-family: 'Encode Sans Condensed', sans-serif;
+    margin-top: 1%;
+}
+
+#sidebar {
+    margin-top: 8%;
+}
+
+#forms {
+    margin-top: 10%;
+}
+
+h1 {
+    font-size: 150px;
+    margin: 0;
+    letter-spacing: -10px;
+    color: white;
+
+}
+
+h2 {
+    font-size: 27px;
+    font-family: 'Markazi Text', serif;
+    color: white;
+}
+
+.form-group {
+    margin-bottom: 6%
+}
+

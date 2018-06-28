@@ -2,6 +2,11 @@ body, html {
     height: 100%;
     background-color: gray;
 }
+
+input {
+    font-family: 'Markazi Text', serif; 
+    font-size: 50px;
+}
 .bg {
     /* The image used */
     background-image: url("../images/skyline-01-new-york-city.jpg");

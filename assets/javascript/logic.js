@@ -17,10 +17,9 @@ var endDate ="MM/DD/YYYY"
 // ==================================================================================
 
 var seatGeek = function() {
+   console.log(city);
     // Event listener for all button elements
-    $("button").on("click", function() {
         // In this case, the "this" keyword refers to the button that was clicked
-        var city = $(this).attr("data-city");
   
         // Constructing a URL to search Giphy for the name of the person who said the quote
         var queryURL = "https://api.seatgeek.com/2/events?datetime_utc.gte=2018-08-01&datetime_utc.lte=2018-08-30&q=" +
@@ -70,13 +69,13 @@ var seatGeek = function() {
                 eventDiv.append(price);
   
                 // Prepending the gifDiv to the "#gifs-appear-here" div in the HTML
-                $("#events-appear-here").prepend(eventDiv);
+                $("#event-view").prepend(eventDiv);
                     }
                 }
 
             })
-        })
-    }
+        }
+
 
 
 
@@ -90,9 +89,6 @@ var seatGeek = function() {
 
 // PROCESS
 // ==================================================================================
-
-    
-    console.log( "ready!" );
 // Render Date Picker    
     $('#startDate-input').datepicker({
         uiLibrary: 'bootstrap4'
@@ -103,14 +99,18 @@ var seatGeek = function() {
 // Submit Button
     $("#submit-form").on("click", function(event) {
         event.preventDefault();
+        // Set Variables
         city = $("#city-input").val().trim();
         state = $("#state-input").val().trim();
         startDate = $("#startDate-input").val().trim();
         endDate = $("#endDate-input").val().trim();
+        // Get Event Info
+        seatGeek();
+        
     
         // TESTING
         console.log("clicked")
         console.log(city +"|"+ state +"|"+ startDate +"|"+ endDate)
-        
     });
+    
 });

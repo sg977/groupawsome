@@ -1,3 +1,4 @@
+$( document ).ready(function() {
 // GLOBAL VARIABLES
 // ================================================================================
 var city = ""
@@ -73,10 +74,10 @@ var seatGeek = function() {
                     }
                 }
 
-            }
-        }
+            })
+        })
     }
-});
+
 
 
 
@@ -89,7 +90,7 @@ var seatGeek = function() {
 
 // PROCESS
 // ==================================================================================
-$( document ).ready(function() {
+
     
     console.log( "ready!" );
 // Render Date Picker    

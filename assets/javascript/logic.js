@@ -54,7 +54,7 @@ var seatGeek = function() {
               // Only taking action if the photo has an appropriate rating
               if (results[i].stats.average_price > 0 && results[i].performers[0].image !== null) {
                 // Creating a div with the class "item"
-                var eventDiv = $("<div class='card' style='width: 18rem;'><div class='card-body'>");
+                var eventDiv = $("<div class='card' style='width: 300px; height: 350px; float:left; margin:5px;'>");
   
                 // Storing the result item's rating
                 var event = results[i].title;
@@ -64,7 +64,7 @@ var seatGeek = function() {
                 var image = results[i].performers[0].image;
   
                 // Creating a paragraph tag with the result item's rating
-                var p = $("<h6 class='card-title'>").text("Event Title: " + event);
+                var p = $("<h5 class='card-title text-center'>").text(event);
                 var price = $("<p class='card-text'>").text("Average Seat Price: $" + cost + "/each");
                 var type = $("<p class='card-text'>").text("Event Type: " + eventType);
                 // Creating an image tag
@@ -72,8 +72,8 @@ var seatGeek = function() {
   
   
                 // Appending the paragraph and personImage we created to the "gifDiv" div we created
-                eventDiv.append(eventImage);
                 eventDiv.append(p);
+                eventDiv.append(eventImage);
                 eventDiv.append(type);
                 eventDiv.append(price);
   

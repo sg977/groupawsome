@@ -48,3 +48,8 @@ h2 {
     margin-bottom: 6%
 }
 
+
+#event-view {
+    margin: 5px;
+    color: purple;
+  }

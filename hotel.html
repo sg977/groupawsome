@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Hotel</title>
+</head>
+<body>
+  
+    <form id="input-form">
+
+        <!-- Here we create the text box for capturing the search term-->
+        
+          <label for="city-input">City<label>
+          <input type="text" id="city-input">
+      
+        
+          <label for="state-input">State</label>
+          <input type="text" id="state-input">
+      
+
+        <!-- Here we have our final submit button -->
+        <button type="submit" class="btn btn-default" id="run-search">
+          <i class="fa fa-search"></i> Search</button>
+        <button class="btn btn-default" id="clear-all">
+          <i class="fa fa-trash"></i> Clear Results</button>
+
+      </form>
+
+
+  <div id="hotels-appear-here"></div>
+
+
+</body>
+
+
+  
+  <script type="text/javascript">
+  var cities = [];
+  var states = [];
+
+
+  function displayHotelInfo() {
+
+    city = $('#city-input').val().trim();
+
+    state = $('#state-input').val().trim();
+
+    var queryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=hotels+in" + city + "," + state + "&key=AIzaSyBXK_1E2arEvJivRllNhZjMlfEOA0XiQgE";
+    console.log(queryURL);
+
+   
+    
+
+    // Performing our AJAX GET request
+    $.ajax({
+            url: queryURL,
+            method: "GET"
+        })
+        // After the data comes back from the API
+        .then(function(response) {
+            // Storing an array of results in the results variable
+            var results = response.results;
+
+            console.log(response);
+            console.log(results); 
+
+
+            // Looping over every result item
+            for (var i = 0; i < 6; i++) {
+
+                // Only taking action if the photo has an appropriate rating
+
+                // Creating a div with the class "item"
+                var hotelDiv = $("<div class='hotel-info'>");
+
+                // Storing the result item's rating
+                var name = results[i].name;
+                var location = results[i].formatted_address;
+                var rating = results[i].rating;
+                var photo = results[i].photos[0].photo_reference;
+                var imgURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photo +"&key=AIzaSyBXK_1E2arEvJivRllNhZjMlfEOA0XiQgE";
+                console.log(photo);
+
+
+                // Creating a paragraph tag with the result item's rating
+                var p = $("<p>").text("Hotel Name: " + name);
+                var locationText = $("<p>").text("Location: " + location);
+                var ratingText = $("<p>").text("Rating: " + rating);
+
+                // Creating an image tag
+                var hotelImage = $("<img>");
+
+                
+                hotelImage.attr("src", imgURL);
+
+                // Appending the paragraph and personImage we created to the "gifDiv" div we created
+                hotelDiv.append(hotelImage);
+                hotelDiv.append(p);
+                hotelDiv.append(locationText);
+                hotelDiv.append(ratingText);
+                
+
+
+                console.log(hotelDiv.append(p));
+
+                // Prepending the gifDiv to the "#gifs-appear-here" div in the HTML
+                $("#hotels-appear-here").prepend(hotelDiv);
+            }
+        });
+
+}
+
+$('#run-search').on('click', function(event) {
+    event.preventDefault();
+
+    var city = $("#city-input").val().trim();
+
+    cities.push(city);
+
+    var state = $("#state-input").val().trim();
+
+    states.push(state);
+
+   displayHotelInfo(); 
+
+});
+
+
+  </script>
+
+</html>

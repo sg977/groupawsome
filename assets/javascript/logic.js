@@ -85,7 +85,68 @@ var seatGeek = function() {
             })
         }
 
+    var googleHotels = function() {
 
+        $("#hotel-view").empty();
+    
+    
+        var queryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=hotels+in+" + city + "," + state + "&key=AIzaSyBXK_1E2arEvJivRllNhZjMlfEOA0XiQgE";
+    
+    
+        
+                console.log(queryURL);
+          
+                // Performing our AJAX GET request
+                $.ajax({
+                    url: queryURL,
+                    method: "GET"
+                })
+                // After the data comes back from the API
+                .then(function(response) {
+                    // Storing an array of results in the results variable
+                    var results = response.results;
+        
+                    console.log(response);
+                    console.log(results); 
+          
+            // Looping over every result item
+            for (var i = 0; i < 6; i++) {
+
+                // Only taking action if the photo has an appropriate rating
+
+                // Creating a div with the class "item"
+                var hotelDiv = $("<div class='card' style='width: 400px; height: 450px; float:left; margin:5px;'>");
+                      // Only taking action if the photo has an appropriate rating
+
+                        var name = results[i].name;
+                        var location = results[i].formatted_address;
+                        var rating = results[i].rating;
+                        var photo = results[i].photos[0].photo_reference;
+                        var imgURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference=" + photo +"&key=AIzaSyBXK_1E2arEvJivRllNhZjMlfEOA0XiQgE";
+                        var hotelURL = results[i].photos[0].html_attributions[0]; 
+                       // console.log(photo);
+          
+                        // Creating a paragraph tag with the result item's rating
+                        var p = $("<h5 class='card-title text-center'>").text(name);
+                        var locationText = $("<p class='card-text'>").text("Location: " + location);
+                        var ratingText = $("<p class='card-text'>").text("Rating: " + rating);
+                        // Creating an image tag
+                        var hotelImage = '<a href="' + imgURL + '" target="_blank"><img src="' + imgURL + '" class="card-img-top"></a>'                
+          
+          
+                        // Appending the paragraph and personImage we created to the "gifDiv" div we created
+                        hotelDiv.append(p);
+                        hotelDiv.append(hotelImage);
+                        hotelDiv.append(locationText);
+                        hotelDiv.append(ratingText);
+          
+                        // Prepending the gifDiv to the "#gifs-appear-here" div in the HTML
+                        $("#hotel-view").append(hotelDiv);
+                            }
+                    
+        
+                    })
+                }
 
 
 
@@ -119,6 +180,7 @@ var seatGeek = function() {
 
         // Get Event Info
         seatGeek();
+        googleHotels();
         
     
         // TESTING

@@ -62,11 +62,15 @@ var seatGeek = function() {
                 var eventType = results[i].type;
                 var imageURL = results[i].url;
                 var image = results[i].performers[0].image;
+                var eventDate = results[i].datetime_local;
+
+                var newDate = eventDate.substring(0, 10);
+                console.log(newDate);
   
                 // Creating a paragraph tag with the result item's rating
                 var p = $("<h5 class='card-title text-center'>").text(event);
                 var price = $("<p class='card-text'>").text("Average Seat Price: $" + cost + "/each");
-                var type = $("<p class='card-text'>").text("Event Type: " + eventType);
+                var eventTime = $("<p class='card-text'>").text("Date of Event: " + newDate);
                 // Creating an image tag
                 var eventImage = '<a href="' + imageURL + '" target="_blank"><img src="' + image + '" class="card-img-top"></a>'                
   
@@ -74,7 +78,7 @@ var seatGeek = function() {
                 // Appending the paragraph and personImage we created to the "gifDiv" div we created
                 eventDiv.append(p);
                 eventDiv.append(eventImage);
-                eventDiv.append(type);
+                eventDiv.append(eventTime);
                 eventDiv.append(price);
   
                 // Prepending the gifDiv to the "#gifs-appear-here" div in the HTML
@@ -123,7 +127,7 @@ var seatGeek = function() {
                         var rating = results[i].rating;
                         var photo = results[i].photos[0].photo_reference;
                         var imgURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference=" + photo +"&key=AIzaSyBXK_1E2arEvJivRllNhZjMlfEOA0XiQgE";
-                        var hotelURL = results[i].photos[0].html_attributions[0]; 
+                        var hotelURL = "https://www.expedia.com/Hotel-Search?destination=" + name
                        // console.log(photo);
           
                         // Creating a paragraph tag with the result item's rating
@@ -131,10 +135,9 @@ var seatGeek = function() {
                         var locationText = $("<p class='card-text'>").text("Location: " + location);
                         var ratingText = $("<p class='card-text'>").text("Rating: " + rating);
                         // Creating an image tag
-                        var hotelImage = '<a href="' + imgURL + '" target="_blank"><img src="' + imgURL + '" class="card-img-top"></a>'                
+                        var hotelImage = '<a href="' + hotelURL + '" target="_blank"><img src="' + imgURL + '" class="card-img-top"></a>'                
           
           
-                        // Appending the paragraph and personImage we created to the "gifDiv" div we created
                         hotelDiv.append(p);
                         hotelDiv.append(hotelImage);
                         hotelDiv.append(locationText);
@@ -150,7 +153,75 @@ var seatGeek = function() {
 
 
 
+        function zamato(){
 
+            // var api_key = "94c22e46962c50fd3dc011bfbc900be7";
+        
+            var queryURL = "https://developers.zomato.com/api/v2.1/cities?q=" + city + "&apikey=94c22e46962c50fd3dc011bfbc900be7";
+            $("#restaurant-view").empty();    
+        
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            }).then(function(response) {
+                console.log(response);
+        
+                var results = (response);
+                var cityID = results.location_suggestions[0].id;
+        
+                console.log(cityID);
+                // $("#restaurant-view").append(cityID);
+
+
+                        
+        
+                var queryURL = "https://developers.zomato.com/api/v2.1/search?entity_id=" + cityID +  "&entity_type=city&collection_id=1&apikey=94c22e46962c50fd3dc011bfbc900be7";
+        
+                    $.ajax({
+                    url: queryURL,
+                    method: "GET"
+                    }).then(function(response) {
+                    
+                    console.log(response);
+                    for(var i = 0; i < 12; i++){
+                        var results = response.restaurants[i].restaurant;
+                        var name = results.name;
+                        var url = results.url;
+                        var cuisines = results.cuisines;
+                        var image = results.featured_image;
+                        var averageCost = results.average_cost_for_two;
+                        var restuarantDiv = $("<div class='card' style='width: 300px; height: 350px; float:left; margin:5px;'>");
+                    
+    
+                        if(image !== ""){
+                            console.log(name);
+                            console.log(url);
+                            console.log(image);
+                            console.log(cuisines);
+
+                            var p = $("<h5 class='card-title text-center'>").text(name);
+                            var cuisine = $("<p class='card-text'>").text("Cuisines: " + cuisines);
+                            var cost = $("<p class='card-text'>").text("Average Cost for two: " + averageCost);
+                            // Creating an image tag
+                            var restaurantImage = '<a href="' + url + '" target="_blank"><img src="' + image + '" class="card-img-top"></a>'                
+              
+              
+                            restuarantDiv.append(p);                            
+                            restuarantDiv.append(restaurantImage);
+                            restuarantDiv.append(cuisine);
+                            restuarantDiv.append(cost);
+                            
+              
+                            // Prepending the gifDiv to the "#gifs-appear-here" div in the HTML
+                            $("#restaurant-view").append(restuarantDiv);
+                            
+                        }
+                    }
+                });      
+        
+            });
+        
+            }
 
 
 
@@ -181,6 +252,7 @@ var seatGeek = function() {
         // Get Event Info
         seatGeek();
         googleHotels();
+        zamato();
         
     
         // TESTING

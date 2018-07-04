@@ -31,7 +31,7 @@ var seatGeek = function() {
         // In this case, the "this" keyword refers to the button that was clicked
   
         // Constructing a URL to search Giphy for the name of the person who said the quote
-        var queryURL = "https://api.seatgeek.com/2/events?datetime_utc.gte=" + startDateGeek + "&datetime_utc.lte=" + endDateGeek + "&q=" +
+        var queryURL = "https://api.seatgeek.com/2/events?datetime_local.gte=" + startDateGeek + "&datetime_local.lte=" + endDateGeek + "&q=" +
           city + "&client_id=Mjc5OTkwOHwxNTMwMDQ1MDAwLjY4";
   
           console.log(queryURL);

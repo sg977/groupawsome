@@ -82,7 +82,8 @@
                 var rating = results[i].rating;
                 var photo = results[i].photos[0].photo_reference;
                 var imgURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photo +"&key=AIzaSyBXK_1E2arEvJivRllNhZjMlfEOA0XiQgE";
-                console.log(photo);
+                var hotelURL = results[i].photos[0].html_attributions[0]; 
+               // console.log(photo);
 
 
                 // Creating a paragraph tag with the result item's rating
@@ -91,16 +92,37 @@
                 var ratingText = $("<p>").text("Rating: " + rating);
 
                 // Creating an image tag
-                var hotelImage = $("<img>");
+                var hotelImage = $("<img id='image'>");
+
+                //embed hotelURL to <img> 
+
+               // var a = $("<a>").attr("href","hotelURL");
+
 
                 
+
                 hotelImage.attr("src", imgURL);
+
+                $("#image").click(function(event){
+                    event.preventDefault();
+                    alert("clicked");
+                    $("hotelURL").attr("target","_blank");
+                    $("#image").wrap(hotelURL); 
+                });
+               
+
+
+
+
+                
 
                 // Appending the paragraph and personImage we created to the "gifDiv" div we created
                 hotelDiv.append(hotelImage);
-                hotelDiv.append(p);
-                hotelDiv.append(locationText);
                 hotelDiv.append(ratingText);
+                hotelDiv.append(locationText);
+                hotelDiv.append(p);
+                
+                
                 
 
 

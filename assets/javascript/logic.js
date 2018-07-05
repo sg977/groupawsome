@@ -6,8 +6,18 @@ var state = ""
 var startDate ="MM/DD/YYYY"
 var endDate ="MM/DD/YYYY"
 
-
-
+// FIREBASE
+// ================================================================================
+var config = {
+    apiKey: "AIzaSyCbrJV0d1rdI3VmdNEjVFKHCDhrLpygdQI",
+    authDomain: "nightout-d21d0.firebaseapp.com",
+    databaseURL: "https://nightout-d21d0.firebaseio.com",
+    projectId: "nightout-d21d0",
+    storageBucket: "nightout-d21d0.appspot.com",
+    messagingSenderId: "188706180471"
+  };
+  firebase.initializeApp(config);
+var database = firebase.database();
 
 
 
@@ -253,7 +263,14 @@ var seatGeek = function() {
         seatGeek();
         googleHotels();
         zamato();
-        
+
+        // Log to Firebase
+        database.ref().set({
+            city: city,
+            state: state,
+            startDate: startDateGeek,
+            endDate: endDateGeek
+          });
     
         // TESTING
         console.log("clicked")

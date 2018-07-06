@@ -35,8 +35,8 @@ var seatGeek = function() {
         // In this case, the "this" keyword refers to the button that was clicked
   
         // Constructing a URL to search Giphy for the name of the person who said the quote
-        var queryURL = "https://api.seatgeek.com/2/events?datetime_local.gte=" + startDateGeek + "&datetime_local.lte=" + endDateGeek + "&q=" +
-          city + "&client_id=Mjc5OTkwOHwxNTMwMDQ1MDAwLjY4";
+        var queryURL = "https://api.seatgeek.com/2/events?datetime_local.gte=" + startDateGeek + "&datetime_local.lte=" + endDateGeek + "&venue.city="
+        + city + "&venue.state=" + state + "&client_id=Mjc5OTkwOHwxNTMwMDQ1MDAwLjY4";
   
           console.log(queryURL);
   
@@ -118,7 +118,7 @@ var googleHotels = function() {
                     console.log(results); 
           
             // Looping over every result item
-            for (var i = 0; i < 6; i++) {
+            for (var i = 0; i < 10; i++) {
 
                 // Only taking action if the photo has an appropriate rating
 

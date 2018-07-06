@@ -1,10 +1,10 @@
 $( document ).ready(function() {
 // GLOBAL VARIABLES
 // ================================================================================
-var city = ""
-var state = ""
-var startDate ="MM/DD/YYYY"
-var endDate ="MM/DD/YYYY"
+var city = "";
+var state = "";
+var startDate ="MM/DD/YYYY";
+var endDate ="MM/DD/YYYY";
 
 // FIREBASE
 // ================================================================================
@@ -17,7 +17,7 @@ var config = {
     messagingSenderId: "188706180471"
   };
   firebase.initializeApp(config);
-var database = firebase.database();
+var dataRef = firebase.database();
 
 
 
@@ -32,8 +32,6 @@ var seatGeek = function() {
 
    console.log(city);
 
-   startDate = $("#startDate-input").val().trim();
-   endDate = $("#endDate-input").val().trim();
 
    var startDateGeek = startDate.replace(/(\d\d)\/(\d\d)\/(\d{4})/, "$3-$1-$2");
    var endDateGeek = endDate.replace(/(\d\d)\/(\d\d)\/(\d{4})/, "$3-$1-$2");  
@@ -99,7 +97,7 @@ var seatGeek = function() {
             })
         }
 
-    var googleHotels = function() {
+var googleHotels = function() {
 
         $("#hotel-view").empty();
     
@@ -159,11 +157,9 @@ var seatGeek = function() {
                     
         
                     })
-                }
+        }
 
-
-
-        function zamato(){
+function zamato(){
 
             // var api_key = "94c22e46962c50fd3dc011bfbc900be7";
         
@@ -231,9 +227,39 @@ var seatGeek = function() {
         
             });
         
-            }
+        }
 
+var logFirebase = function() {
+    // Log to Firebase
+    dataRef.ref().push({
+        city: city,
+        state: state,
+        startDate: startDate,
+        endDate: endDate,
+        dateAdded: firebase.database.ServerValue.TIMESTAMP
+      });
 
+    dataRef.ref().on("child_added", function(childSnapshot) {
+        console.log(childSnapshot.val().name);
+    })
+}
+
+var lastSearch = function() {
+    dataRef.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
+        // Change the HTML to reflect
+        city = snapshot.val().city;
+        state = snapshot.val().state;
+        startDate = snapshot.val().startDate;
+        endDate = snapshot.val().endDate;
+        
+
+        console.log (city);
+        console.log (state);
+        console.log (startDate);
+        console.log (endDate);
+
+      });
+}
 
 
 
@@ -263,18 +289,36 @@ var seatGeek = function() {
         seatGeek();
         googleHotels();
         zamato();
-
-        // Log to Firebase
-        database.ref().set({
-            city: city,
-            state: state,
-            startDate: startDateGeek,
-            endDate: endDateGeek
-          });
+        logFirebase();
     
         // TESTING
         console.log("clicked")
         console.log(city +"|"+ state +"|"+ startDateGeek +"|"+ endDateGeek)
     });
     
+// Last Search Button
+
+$("#last-search").on("click", function(event) {
+    console.log("clicked");
+    dataRef.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
+        // Change the HTML to reflect
+        city = snapshot.val().city;
+        state = snapshot.val().state;
+        startDate = snapshot.val().startDate;
+        endDate = snapshot.val().endDate;
+        
+        var startDateGeek = startDate.replace(/(\d\d)\/(\d\d)\/(\d{4})/, "$3-$1-$2");
+        var endDateGeek = endDate.replace(/(\d\d)\/(\d\d)\/(\d{4})/, "$3-$1-$2");
+
+        seatGeek();
+        googleHotels();
+        zamato();
+
+        console.log (city);
+        console.log (state);
+        console.log (startDate);
+        console.log (endDate);
+
+      });
+});
 });

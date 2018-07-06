@@ -262,8 +262,6 @@ function validatingForm(){
     var state = $("#state-input").val();
     var startDate = $("#stateDate-input").val();
     var endDate = $("#endDate-input").val();
-
-    var counter = 0; 
    
     // Checking if fields are empty
     if(city === "" || state === "" || startDate === "" || endDate === ""){
@@ -283,7 +281,7 @@ function validatingForm(){
 function hide(){
     message.hide();
 }
-
+// onclick function for validation
 $("#submit-form").on("click", function(){
    validatingForm();
 });

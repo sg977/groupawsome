@@ -1,11 +1,11 @@
 $( document ).ready(function() {
 // GLOBAL VARIABLES
 // ================================================================================
-var city = ""
-var state = ""
-var startDate ="MM/DD/YYYY"
-var endDate ="MM/DD/YYYY"
-
+var city = "";
+var state = "";
+var startDate ="MM/DD/YYYY";
+var endDate ="MM/DD/YYYY";
+var message = $("#red").hide();
 // FIREBASE
 // ================================================================================
 var config = {
@@ -17,11 +17,7 @@ var config = {
     messagingSenderId: "188706180471"
   };
   firebase.initializeApp(config);
-var database = firebase.database();
-
-
-
-
+var dataRef = firebase.database();
 
 // FUNCTIONS
 // ==================================================================================
@@ -32,8 +28,6 @@ var seatGeek = function() {
 
    console.log(city);
 
-   startDate = $("#startDate-input").val().trim();
-   endDate = $("#endDate-input").val().trim();
 
    var startDateGeek = startDate.replace(/(\d\d)\/(\d\d)\/(\d{4})/, "$3-$1-$2");
    var endDateGeek = endDate.replace(/(\d\d)\/(\d\d)\/(\d{4})/, "$3-$1-$2");  
@@ -41,8 +35,8 @@ var seatGeek = function() {
         // In this case, the "this" keyword refers to the button that was clicked
   
         // Constructing a URL to search Giphy for the name of the person who said the quote
-        var queryURL = "https://api.seatgeek.com/2/events?datetime_local.gte=" + startDateGeek + "&datetime_local.lte=" + endDateGeek + "&q=" +
-          city + "&client_id=Mjc5OTkwOHwxNTMwMDQ1MDAwLjY4";
+        var queryURL = "https://api.seatgeek.com/2/events?datetime_local.gte=" + startDateGeek + "&datetime_local.lte=" + endDateGeek + "&venue.city="
+        + city + "&venue.state=" + state + "&client_id=Mjc5OTkwOHwxNTMwMDQ1MDAwLjY4";
   
           console.log(queryURL);
   
@@ -99,7 +93,7 @@ var seatGeek = function() {
             })
         }
 
-    var googleHotels = function() {
+var googleHotels = function() {
 
         $("#hotel-view").empty();
     
@@ -124,7 +118,7 @@ var seatGeek = function() {
                     console.log(results); 
           
             // Looping over every result item
-            for (var i = 0; i < 6; i++) {
+            for (var i = 0; i < 10; i++) {
 
                 // Only taking action if the photo has an appropriate rating
 
@@ -159,11 +153,9 @@ var seatGeek = function() {
                     
         
                     })
-                }
+        }
 
-
-
-        function zamato(){
+function zamato(){
 
             // var api_key = "94c22e46962c50fd3dc011bfbc900be7";
         
@@ -180,10 +172,6 @@ var seatGeek = function() {
                 var cityID = results.location_suggestions[0].id;
         
                 console.log(cityID);
-                // $("#restaurant-view").append(cityID);
-
-
-                        
         
                 var queryURL = "https://developers.zomato.com/api/v2.1/search?entity_id=" + cityID +  "&entity_type=city&collection_id=1&apikey=94c22e46962c50fd3dc011bfbc900be7";
         
@@ -231,11 +219,74 @@ var seatGeek = function() {
         
             });
         
-            }
+        }
 
+var logFirebase = function() {
+    // Log to Firebase
+    dataRef.ref().push({
+        city: city,
+        state: state,
+        startDate: startDate,
+        endDate: endDate,
+        dateAdded: firebase.database.ServerValue.TIMESTAMP
+      });
 
+    dataRef.ref().on("child_added", function(childSnapshot) {
+        console.log(childSnapshot.val().name);
+    })
+}
 
+var lastSearch = function() {
+    dataRef.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
+        // Change the HTML to reflect
+        city = snapshot.val().city;
+        state = snapshot.val().state;
+        startDate = snapshot.val().startDate;
+        endDate = snapshot.val().endDate;
+        
 
+        console.log (city);
+        console.log (state);
+        console.log (startDate);
+        console.log (endDate);
+
+      });
+}
+
+// Validating Form Fields
+// ===============================
+
+function validatingForm(){
+    // grabbing the values from the forms
+    var city = $("#city-input").val();
+    var state = $("#state-input").val();
+    var startDate = $("#stateDate-input").val();
+    var endDate = $("#endDate-input").val();
+   
+    // Checking if fields are empty
+    if(city === "" || state === "" || startDate === "" || endDate === ""){
+        // Showing a error message
+        message.show();
+        // Setting a timer for error message
+        setTimeout(hide, 5000);
+        return false;
+        
+    }else{
+        // Hiding error message
+        hide();
+    }
+}
+
+// Creating a hide function for the setTimeOut
+function hide(){
+    message.hide();
+}
+// onclick function for validation
+$("#submit-form").on("click", function(event){
+    event.preventDefault();
+    validatingForm();
+});
+// ===============================
 
 
 // PROCESS
@@ -247,9 +298,14 @@ var seatGeek = function() {
     $('#endDate-input').datepicker({
         uiLibrary: 'bootstrap4'
     });
+
+    $(".name").fadeIn();
+    
 // Submit Button
     $("#submit-form").on("click", function(event) {
         event.preventDefault();
+        //Fade in divs
+        $(".result-title").fadeIn(2000);
         // Set Variables
         city = $("#city-input").val().trim();
         state = $("#state-input").val().trim();
@@ -263,18 +319,40 @@ var seatGeek = function() {
         seatGeek();
         googleHotels();
         zamato();
+        logFirebase();
 
-        // Log to Firebase
-        database.ref().set({
-            city: city,
-            state: state,
-            startDate: startDateGeek,
-            endDate: endDateGeek
-          });
-    
         // TESTING
         console.log("clicked")
         console.log(city +"|"+ state +"|"+ startDateGeek +"|"+ endDateGeek)
     });
     
+// Last Search Button
+
+$("#last-search").on("click", function(event) {
+    event.preventDefault();
+    console.log("clicked");
+    
+    $(".result-title").fadeIn(2000);
+    
+    dataRef.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
+        // Change the HTML to reflect
+        city = snapshot.val().city;
+        state = snapshot.val().state;
+        startDate = snapshot.val().startDate;
+        endDate = snapshot.val().endDate;
+        
+        var startDateGeek = startDate.replace(/(\d\d)\/(\d\d)\/(\d{4})/, "$3-$1-$2");
+        var endDateGeek = endDate.replace(/(\d\d)\/(\d\d)\/(\d{4})/, "$3-$1-$2");
+
+        seatGeek();
+        googleHotels();
+        zamato();
+
+        console.log (city);
+        console.log (state);
+        console.log (startDate);
+        console.log (endDate);
+
+      });
+});
 });

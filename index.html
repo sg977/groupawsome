@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Night Out</title>
+        
+        <link rel="shortcut icon" type="img/jpeg" href="assets/images/night_out.png">
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -12,9 +14,10 @@
         <link rel="stylesheet" href="assets/css/style.css">
         <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
         <script type="text/javascript" src="assets/javascript/logic.js"></script>
-    <title>Document</title>
+   
 </head>
 <body class="bg">
+<<<<<<< HEAD
         <div id="header">
             
             <div class="row align-items-center text-justify">
@@ -24,6 +27,19 @@
                 </div>
             <div class="col-lg-6" id="sidebar">
                     <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque pariatur nobis amet suscipit reprehenderit rerum itaque nam, saepe deleniti perspiciatis laudantium, sapiente architecto voluptatibus tempore expedita non quae sed nostrum!</h3>
+=======
+        <div class="container">
+            <div class="row align-items-center text-justify" id="title">
+                <div class="col-lg-6">
+                    <h1 class="name">Night</h1>
+                    <h1 class="name">Out</h1>
+                </div>
+            <div class="col-lg-6" id="sidebar">
+                    <h3>Striving to provide you with the best available entertainment options for a "Night Out" on the town. 
+                        Please enter your destination and dates of travel below.</h3>
+                    <br>
+                    <h2>A Night Out is Your Only Way Out...</h2>
+>>>>>>> 2c55ed8c6e474f54c53df777638206ef934f7055
                 </div>
             </div>
             <!--<figure>
@@ -32,7 +48,6 @@
                 <img src="assets/images/Philadelphia Skyline.jpg">
             </figure>-->
         </div>
-
         <div class="container" id="forms">
             <div class="row">
                 <div class="col-lg-6">
@@ -53,20 +68,31 @@
                 <div class='col-lg-6'>
                         <input id="startDate-input" placeholder="Start Date" required>
                 </div>
-            
                 <div class='col-lg-6'>
                         <input id="endDate-input" placeholder="End Date" required/>
                 </div>
             </div>
             <br>
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-6">
+                    <p id="red">Please fill out all fields</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
                     <button type="submit" class="btn btn-outline-light" id="submit-form">Submit</button>
-                </div>    
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-lg-6">
+                    <button type="submit" class="btn btn-outline-light" id="last-search">Last Search</button>
+                </div>
             </div>
             <br>
 
             <div class="row">
+<<<<<<< HEAD
                 <h2 class="display-4 text-light"><u>Events</u></h2>
                 <div class="col-lg-12" id="event-view"></div>
             </div>
@@ -86,6 +112,22 @@
         <div class="footer">
             <small>&copy; Copyright, Group Awsome</small>
         </div>
+=======
+                <h1 class="display-4 text-light result-title"><u>Events To See</u></h1>
+                <div class="col-lg-12 result-view" id="event-view"></div>
+            </div>
+            <br>
+            <div class="row">
+                <h1 class="display-4 text-light result-title"><u>Places To Dine</u></h1>
+                <div class="col-lg-12 result-view" id="restaurant-view"></div>
+            </div>
+            <br>
+            <div class="row">
+                <h1 class="display-4 text-light result-title"><u>Hotels To Stay</u></h1>   
+                <div class="col-lg-12 result-view" id="hotel-view"></div>
+            </div>   
+		</div>
+>>>>>>> 2c55ed8c6e474f54c53df777638206ef934f7055
 
 </body>
 </html>

@@ -1,10 +1,11 @@
 body, html {
     height: 100%;
-    background-color: gray;
+    background-color: grey; 
 }
 
 
-.bg {
+
+#header {
     /* The image used */
     background-image: url("../images/skyline-01-new-york-city.jpg");
 
@@ -15,6 +16,8 @@ body, html {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+
+    padding-top: 1px; 
 }
 
 #title {
@@ -27,21 +30,41 @@ body, html {
 }
 
 #forms {
-    margin-top: 10%;
+    margin: 5% 15% 5% 25%;
 }
 
-h1 {
-    font-size: 150px;
-    margin: 0;
-    letter-spacing: -10px;
+#state-input {
+    float: right;
+
+}
+
+#night{
+    font-size: 250px;
+    margin-left: 50px;
     color: white;
+    font-family: 'Anton', sans-serif;
 
 }
+
+#out{
+
+    font-size: 200px;
+    margin-left:300px;
+    color: black;
+    font-family: 'Anton', sans-serif;
+    
+
+}
+
+
+
+
+
 
 h2 {
-    font-size: 27px;
-    font-family: 'Markazi Text', serif;
-    color: white;
+    font-family: black 20px;  
+    height: 10%; 
+    
 }
 
 .form-group {
@@ -53,3 +76,80 @@ h2 {
     margin: 5px;
     color: purple;
   }
+
+
+  .footer {
+      height: 5%; 
+      width: 100%; 
+      position:fixed;
+      left:0;
+      bottom:0;
+      background-color: white;
+      color: black;
+      text-align: center; 
+  }
+
+
+
+  @media screen and (max-width: 768px) {
+    body {
+      background-color: #333;
+    }
+  
+    .wrapper {
+      /* Box-model */
+      width: 100%;
+      padding: 20px;
+    }
+  
+    #main-content,
+    #sidebar {
+      width: 100%;
+    }
+  
+    #sidebar {
+      margin-top: 40px;
+    }
+  }
+  
+  /* Additional Screen Sizes */
+  
+  /* Width at 320px and below */
+  @media screen and (max-width: 320px) {
+    body {
+      background-color:grey;
+    }
+  
+    #header {
+      /* Box-model */
+      width: 100%;
+    }
+  
+    #forms,
+    #sidebar {
+      width: 100%;
+    }
+  
+ 
+  }
+  
+  /* Width at 168px and below */
+  @media screen and (max-width: 168px) {
+    body {
+      background-color:grey;
+    }
+  
+    .header {
+      /* Box-model */
+      width: 100%;
+
+    }
+  
+    #forms,
+    #sidebar {
+      width: 100%;
+    }
+  
+
+  }
+  

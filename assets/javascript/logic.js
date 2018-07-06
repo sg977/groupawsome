@@ -276,6 +276,8 @@ var lastSearch = function() {
 // Submit Button
     $("#submit-form").on("click", function(event) {
         event.preventDefault();
+        //Fade in divs
+        $(".result-title").fadeIn(2000);
         // Set Variables
         city = $("#city-input").val().trim();
         state = $("#state-input").val().trim();
@@ -290,7 +292,7 @@ var lastSearch = function() {
         googleHotels();
         zamato();
         logFirebase();
-    
+
         // TESTING
         console.log("clicked")
         console.log(city +"|"+ state +"|"+ startDateGeek +"|"+ endDateGeek)
@@ -299,7 +301,11 @@ var lastSearch = function() {
 // Last Search Button
 
 $("#last-search").on("click", function(event) {
+    event.preventDefault();
     console.log("clicked");
+    
+    $(".result-title").fadeIn(2000);
+    
     dataRef.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
         // Change the HTML to reflect
         city = snapshot.val().city;

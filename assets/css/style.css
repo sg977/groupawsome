@@ -50,8 +50,8 @@ h2 {
 
 .result-title {
     letter-spacing: -1px;
+    display: none;
 }
-
 
 #event-view {
     margin: 5px;

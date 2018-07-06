@@ -5,7 +5,7 @@ var city = "";
 var state = "";
 var startDate ="MM/DD/YYYY";
 var endDate ="MM/DD/YYYY";
-
+var message = $("#red").hide();
 // FIREBASE
 // ================================================================================
 var config = {
@@ -18,10 +18,6 @@ var config = {
   };
   firebase.initializeApp(config);
 var dataRef = firebase.database();
-
-
-
-
 
 // FUNCTIONS
 // ==================================================================================
@@ -176,10 +172,6 @@ function zamato(){
                 var cityID = results.location_suggestions[0].id;
         
                 console.log(cityID);
-                // $("#restaurant-view").append(cityID);
-
-
-                        
         
                 var queryURL = "https://developers.zomato.com/api/v2.1/search?entity_id=" + cityID +  "&entity_type=city&collection_id=1&apikey=94c22e46962c50fd3dc011bfbc900be7";
         
@@ -261,7 +253,41 @@ var lastSearch = function() {
       });
 }
 
+// Validating Form Fields
+// ===============================
 
+function validatingForm(){
+    // grabbing the values from the forms
+    var city = $("#city-input").val();
+    var state = $("#state-input").val();
+    var startDate = $("#stateDate-input").val();
+    var endDate = $("#endDate-input").val();
+
+    var counter = 0; 
+   
+    // Checking if fields are empty
+    if(city === "" || state === "" || startDate === "" || endDate === ""){
+        // Showing a error message
+        message.show();
+        // Setting a timer for error message
+        setTimeout(hide, 5000);
+        return false;
+        
+    }else{
+        // Hiding error message
+        hide();
+    }
+}
+
+// Creating a hide function for the setTimeOut
+function hide(){
+    message.hide();
+}
+
+$("#submit-form").on("click", function(){
+   validatingForm();
+});
+// ===============================
 
 
 // PROCESS

@@ -273,6 +273,9 @@ var lastSearch = function() {
     $('#endDate-input').datepicker({
         uiLibrary: 'bootstrap4'
     });
+
+    $(".name").fadeIn();
+    
 // Submit Button
     $("#submit-form").on("click", function(event) {
         event.preventDefault();

@@ -41,6 +41,13 @@ body, html {
 }
 
 h2 {
+    font-size: 36px;
+    font-family: 'Markazi Text', serif;
+    font-style: italic;
+    color: white;
+}
+
+h3 {
     font-size: 27px;
     font-family: 'Markazi Text', serif;
     color: white;

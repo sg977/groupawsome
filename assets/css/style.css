@@ -17,11 +17,7 @@ body, html {
     background-repeat: no-repeat;
     background-size: cover;
 
-<<<<<<< HEAD
     padding-top: 1px; 
-=======
-    padding-top: 1px;
->>>>>>> 2c55ed8c6e474f54c53df777638206ef934f7055
 }
 
 #title {
@@ -37,7 +33,6 @@ body, html {
     margin: 5% 15% 5% 25%;
 }
 
-<<<<<<< HEAD
 #state-input {
     float: right;
 
@@ -49,14 +44,6 @@ body, html {
     color: white;
     font-family: 'Anton', sans-serif;
 
-=======
-.name {
-    font-size: 150px;
-    margin: 0;
-    letter-spacing: -10px;
-    color: white;
-    display: none;
->>>>>>> 2c55ed8c6e474f54c53df777638206ef934f7055
 }
 
 #out{
@@ -75,22 +62,9 @@ body, html {
 
 
 h2 {
-<<<<<<< HEAD
     font-family: black 20px;  
     height: 10%; 
     
-=======
-    font-size: 36px;
-    font-family: 'Markazi Text', serif;
-    font-style: italic;
-    color: white;
-}
-
-h3 {
-    font-size: 27px;
-    font-family: 'Markazi Text', serif;
-    color: white;
->>>>>>> 2c55ed8c6e474f54c53df777638206ef934f7055
 }
 
 .form-group {
@@ -107,7 +81,6 @@ h3 {
     color: purple;
   }
 
-<<<<<<< HEAD
 
   .footer {
       height: 5%; 
@@ -184,8 +157,3 @@ h3 {
 
   }
   
-=======
-  #red {
-      color: red;
-  }
->>>>>>> 2c55ed8c6e474f54c53df777638206ef934f7055

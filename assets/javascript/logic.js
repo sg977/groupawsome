@@ -282,8 +282,9 @@ function hide(){
     message.hide();
 }
 // onclick function for validation
-$("#submit-form").on("click", function(){
-   validatingForm();
+$("#submit-form").on("click", function(event){
+    event.preventDefault();
+    validatingForm();
 });
 // ===============================
 

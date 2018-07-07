@@ -5,8 +5,10 @@ body, html {
 
 
 
+
 #header {
     /* The image used */
+    position: relative;  
     background-image: url("../images/skyline-01-new-york-city.jpg");
 
     /* Full height */
@@ -17,7 +19,27 @@ body, html {
     background-repeat: no-repeat;
     background-size: cover;
 
-    padding-top: 1px; 
+    margin-top:0; 
+}
+
+#city-input {
+    font-family: 'Encode Sans Condensed', sans-serif;
+    padding: 20px 0 20px 0; 
+}
+
+#state-input {
+    font-family: 'Encode Sans Condensed', sans-serif;
+    padding: 20px 0 20px 0; 
+}
+
+#startDate-input {
+    font-family: 'Encode Sans Condensed', sans-serif;
+    padding: 20px 0 20px 0; 
+}
+
+#endDate-input {
+    font-family: 'Encode Sans Condensed', sans-serif;
+    padding: 20px 0 20px 0; 
 }
 
 #title {
@@ -42,7 +64,14 @@ h5 {
 
 
 #sidebar {
-    margin-top: 8%;
+    float: right; 
+    position: fixed; 
+    top: 50px; 
+    left: 850px; 
+    font-family: 'Permanent Marker', cursive;
+    font-size: 30px; 
+    
+
 }
 
 #forms {

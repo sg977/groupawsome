@@ -98,8 +98,8 @@ var googleHotels = function() {
         $("#hotel-view").empty();
     
     
-        var queryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=hotels+in+" + city + "," + state + "&key=AIzaSyBXK_1E2arEvJivRllNhZjMlfEOA0XiQgE";
-    
+        var queryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=hotels+in+" + city + "," + state + "&key=AIzaSyBAFkXSYcRjjq87iZwon8AfHqkp8Ou25hM";
+//old API key: AIzaSyBXK_1E2arEvJivRllNhZjMlfEOA0XiQgE
     
         
                 console.log(queryURL);

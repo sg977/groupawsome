@@ -368,14 +368,6 @@ $("#reset").on("click",function(event) {
         $("input").val(""); 
 
 
-       // $("input").trigger("reset"); 
-
-
-       /* $("#city-input").value="";
-        $("#startDate-input").val();
-        $("#endDate-input").val();*/
-
-
 });});
 
 

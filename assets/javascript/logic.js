@@ -365,9 +365,10 @@ $("#reset").on("click",function(event) {
         $("#event-view").empty();
         $("#restaurant-view").empty();
         $("#hotel-view").empty(); 
+        $("input").val(""); 
 
 
-        $(".form-group").val=""; 
+       // $("input").trigger("reset"); 
 
 
        /* $("#city-input").value="";

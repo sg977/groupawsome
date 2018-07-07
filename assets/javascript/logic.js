@@ -367,9 +367,12 @@ $("#reset").on("click",function(event) {
         $("#hotel-view").empty(); 
 
 
-        $("#city-input").value="";
+        $(".form-group").val=""; 
+
+
+       /* $("#city-input").value="";
         $("#startDate-input").val();
-        $("#endDate-input").val();
+        $("#endDate-input").val();*/
 
 
 });});

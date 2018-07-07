@@ -41,7 +41,7 @@ body, html {
 #night{
     font-size: 250px;
     margin-left: 50px;
-    color: white;
+    color: black;
     font-family: 'Anton', sans-serif;
 
 }
@@ -50,10 +50,18 @@ body, html {
 
     font-size: 200px;
     margin-left:300px;
-    color: black;
+    color: white;
     font-family: 'Anton', sans-serif;
     
 
+}
+
+button {
+    font-weight: 20px; 
+    font-size: 20px; 
+    color: black;
+    background: white;
+    padding: 10px; 
 }
 
 

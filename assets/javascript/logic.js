@@ -359,4 +359,21 @@ $("#last-search").on("click", function(event) {
 
 
 
+$(document).ready(function(){
+$("#reset").on("click",function(event) {
+        
+        $("#event-view").empty();
+        $("#restaurant-view").empty();
+        $("#hotel-view").empty(); 
+
+
+        $("#city-input").value="";
+        $("#startDate-input").val();
+        $("#endDate-input").val();
+
+
+});});
+
+
+
 

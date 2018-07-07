@@ -25,6 +25,22 @@ body, html {
     margin-top: 1%;
 }
 
+img {
+    height: 200px;
+    width: 200px;
+}
+
+p {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  color: purple;
+}
+
+h5 {
+  color: purple;
+}
+
+
 #sidebar {
     margin-top: 8%;
 }
@@ -88,6 +104,16 @@ h2 {
     margin: 5px;
     color: purple;
   }
+
+#restaurant-view {
+  margin: 5px;
+  color: purple;
+}
+
+#hotel-view {
+  margin: 5px;
+  color: purple;
+}
 
 
   .footer {

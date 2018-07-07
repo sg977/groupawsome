@@ -118,12 +118,12 @@ var googleHotels = function() {
                     console.log(results); 
           
             // Looping over every result item
-            for (var i = 0; i < 10; i++) {
+            for (var i = 0; i < 6; i++) {
 
                 // Only taking action if the photo has an appropriate rating
 
                 // Creating a div with the class "item"
-                var hotelDiv = $("<div class='card' style='width: 400px; height: 450px; float:left; margin:5px;'>");
+                var hotelDiv = $("<div class='card' style='width: 300px; height: 350px; float:left; margin:5px;'>");
                       // Only taking action if the photo has an appropriate rating
 
                         var name = results[i].name;

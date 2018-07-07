@@ -25,6 +25,7 @@ var dataRef = firebase.database();
 var seatGeek = function() {
 
     $("#event-view").empty();
+    $("#title-event").empty();
 
    console.log(city);
 
@@ -49,7 +50,8 @@ var seatGeek = function() {
           .then(function(response) {
             // Storing an array of results in the results variable
             var results = response.events;
-  
+
+            $("#title-event").text("Events");
             console.log(response.events);
   
             // Looping over every result item
@@ -96,6 +98,8 @@ var seatGeek = function() {
 var googleHotels = function() {
 
         $("#hotel-view").empty();
+        $("#title-hotel").empty();
+        
     
     
         var queryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=hotels+in+" + city + "," + state + "&key=AIzaSyBAFkXSYcRjjq87iZwon8AfHqkp8Ou25hM";
@@ -116,6 +120,7 @@ var googleHotels = function() {
         
                     console.log(response);
                     console.log(results); 
+                    $("#title-hotel").text("Hotels");
           
             // Looping over every result item
             for (var i = 0; i < 6; i++) {
@@ -161,6 +166,7 @@ function zamato(){
         
             var queryURL = "https://developers.zomato.com/api/v2.1/cities?q=" + city + "&apikey=94c22e46962c50fd3dc011bfbc900be7";
             $("#restaurant-view").empty();    
+            $("#title-restaurant").empty();
         
             $.ajax({
                 url: queryURL,
@@ -181,17 +187,20 @@ function zamato(){
                     }).then(function(response) {
                     
                     console.log(response);
-                    for(var i = 0; i < 12; i++){
+                    $("#title-restaurant").text("Restaurants");
+
+                    for(var i = 0; i < 30; i++){
                         var results = response.restaurants[i].restaurant;
                         var name = results.name;
                         var url = results.url;
+                        var ratingScore = results.user_rating.aggregate_rating;
                         var cuisines = results.cuisines;
                         var image = results.featured_image;
                         var averageCost = results.average_cost_for_two;
                         var restuarantDiv = $("<div class='card' style='width: 300px; height: 350px; float:left; margin:5px;'>");
                     
     
-                        if(image !== ""){
+                        if(image !== "" && ratingScore > 4){
                             console.log(name);
                             console.log(url);
                             console.log(image);

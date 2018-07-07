@@ -1,225 +1,226 @@
 body, html {
-    height: 100%;
-    background-color: grey; 
+  height: 100%;
+  background-color: grey; 
 }
 
 
 
 
 #header {
-    /* The image used */
-    /* position: relative;   */
-    background-image: url("../images/skyline-01-new-york-city.jpg");
+  /* The image used */
+  /* position: relative;   */
+  background-image: url("../images/skyline-01-new-york-city.jpg");
 
-    /* Full height */
-    height: 50%;
+  /* Full height */
+  height: 50%;
 
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    margin-top:0; 
-    margin-bottom: 20px;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  margin-top:0; 
+  margin-bottom: 20px;
 }
 
 #city-input {
-    font-family: 'Encode Sans Condensed', sans-serif;
-    padding: 20px 0 20px 0; 
+  font-family: 'Encode Sans Condensed', sans-serif;
+  padding: 20px 0 20px 0; 
 
 }
 
 #state-input {
-    font-family: 'Encode Sans Condensed', sans-serif;
-    padding: 20px 0 20px 0; 
+  font-family: 'Encode Sans Condensed', sans-serif;
+  padding: 20px 0 20px 0; 
 
 }
 
 #startDate-input {
-    font-family: 'Encode Sans Condensed', sans-serif;
-    padding: 20px 0 20px 0; 
+  font-family: 'Encode Sans Condensed', sans-serif;
+  padding: 20px 0 20px 0; 
 
 }
 
 #endDate-input {
-    font-family: 'Encode Sans Condensed', sans-serif;
-    padding: 20px 0 20px 0; 
+  font-family: 'Encode Sans Condensed', sans-serif;
+  padding: 20px 0 20px 0; 
 
 }
 
 #title {
-    font-family: 'Encode Sans Condensed', sans-serif;
-    margin-top: 1%;
+  font-family: 'Encode Sans Condensed', sans-serif;
+  margin-top: 1%;
 }
 
 img {
-    height: 200px;
-    width: 200px;
+  height: 200px;
+  width: 200px;
 }
 
 p {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font-weight: bold;
-  color: purple;
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+font-weight: bold;
+color: purple;
 }
 
 h5 {
-  color: purple;
+color: purple;
 }
 /* ============================================ */
 #sidebar {
-    opacity: 0.8;
-    font-size: 50px;
+  opacity: 0.8;
+  font-size: 50px;
 }
 
 #sidebar h3 {
-    font-family: 'Permanent Marker', cursive; 
-    padding-bottom: 15%;
-    padding-right: 15%; 
-    /* --------------------- */
-    position: relative;
-    bottom: 50px;
-    
+  font-family: 'Permanent Marker', cursive; 
+  padding-bottom: 15%;
+  padding-right: 15%; 
+  /* --------------------- */
+  position: relative;
+  bottom: 50px;
+  
+} 
 
 #night{
-    opacity: 0.3;
-    font-size: 170px;
-    color: black;
-    font-family: 'Anton', sans-serif;
-    padding-top: 20px;
-    /* ------------------ */
-    position: relative;
-    bottom: 30px;
-    left: 100px;
+  opacity: 0.3;
+  font-size: 170px;
+  color: black;
+  font-family: 'Anton', sans-serif;
+  padding-top: 20px;
+  /* ------------------ */
+  position: relative;
+  bottom: 30px;
+  left: 100px;
 }
 
 #out{
-    opacity: 0.8;
-    font-size: 100px;
-    color: white;
-    font-family: 'Anton', sans-serif;
-    /* --------------------- */
-    position: relative;
-    bottom: 50px;
-    left: 300px;
+  opacity: 0.8;
+  font-size: 100px;
+  color: white;
+  font-family: 'Anton', sans-serif;
+  /* --------------------- */
+  position: relative;
+  bottom: 50px;
+  left: 300px;
 }
 /* ============================================ */
 button {
-    font-weight: 20px; 
-    font-size: 20px; 
-    color: black;
-    background: white;
-    padding: 10px; 
+  font-weight: 20px; 
+  font-size: 20px; 
+  color: black;
+  background: white;
+  padding: 10px; 
 }
 
 h2 {
-    font-family: black 20px;  
-    height: 10%; 
-    
+  font-family: black 20px;  
+  height: 10%; 
+  
 }
 
 .form-group {
-    margin-bottom: 6%;
-    clear: both;
+  margin-bottom: 6%;
+  clear: both;
 }
 
 .result-title {
-    letter-spacing: -1px;
-    display: none;
-    clear: both;
+  letter-spacing: -1px;
+  display: none;
+  clear: both;
 
 }
 
 #event-view {
-    margin: 5px;
-    color: purple;
-    
-  }
-
-#restaurant-view {
   margin: 5px;
   color: purple;
+  
+}
+
+#restaurant-view {
+margin: 5px;
+color: purple;
 }
 
 #hotel-view {
-  margin: 5px;
-  color: purple;
+margin: 5px;
+color: purple;
 }
 
 
-  .footer {
-      height: 5%; 
-      width: 100%; 
-      position:fixed;
-      left:0;
-      bottom:0;
-      background-color: white;
-      color: black;
-      text-align: center; 
+.footer {
+    height: 5%; 
+    width: 100%; 
+    position:fixed;
+    left:0;
+    bottom:0;
+    background-color: white;
+    color: black;
+    text-align: center; 
+}
+
+/* ============================================ */
+
+
+
+@media screen and (max-width: 768px) {
+  body {
+    background-color: #333;
   }
 
-  /* ============================================ */
-
-
-
-  @media screen and (max-width: 768px) {
-    body {
-      background-color: #333;
-    }
-  
-    .wrapper { 
-      /* Box-model */
-      width: 100%;
-      padding: 20px;
-    }
-  
-    #main-content,
-    #sidebar {
-      width: 100%;
-    }
-  
-    #sidebar {
-      margin-top: 40px;
-    }
+  .wrapper { 
+    /* Box-model */
+    width: 100%;
+    padding: 20px;
   }
-  
-  /* Additional Screen Sizes */
-  
-  /* Width at 320px and below */
-  @media screen and (max-width: 320px) {
-    body {
-      background-color:grey;
-    }
-   */
-    #header {
-      /* Box-model */
-       width: 100%;
-    }
-   
-    #forms,
-    #sidebar {
-      width: 100%;
-    }
-  
+
+  #main-content,
+  #sidebar {
+    width: 100%;
+  }
+
+  #sidebar {
+    margin-top: 40px;
+  }
+}
+
+/* Additional Screen Sizes */
+
+/* Width at 320px and below */
+@media screen and (max-width: 320px) {
+  body {
+    background-color:grey;
+  }
+ */
+  #header {
+    /* Box-model */
+     width: 100%;
+  }
  
+  #forms,
+  #sidebar {
+    width: 100%;
   }
-  
-  /* Width at 168px and below */
-  @media screen and (max-width: 168px) {
-    body {
-      background-color:grey;
-    }
-  
-    .header {
-      /* Box-model */
-      width: 100%;
 
-    }
-  
-    #forms,
-    #sidebar {
-      width: 100%;
-    }
-  
+
+}
+
+/* Width at 168px and below */
+@media screen and (max-width: 168px) {
+  body {
+    background-color:grey;
+  }
+
+  .header {
+    /* Box-model */
+    width: 100%;
 
   }
+
+  #forms,
+  #sidebar {
+    width: 100%;
+  }
+
+
+}

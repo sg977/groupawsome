@@ -371,9 +371,12 @@ $("#last-search").on("click", function(event) {
 $(document).ready(function(){
 $("#reset").on("click",function(event) {
         
-        $("#event-view").empty();
-        $("#restaurant-view").empty();
-        $("#hotel-view").empty(); 
+        $("#event-view").empty();    
+        $("#title-event").empty();
+        $("#restaurant-view").empty();    
+        $("#title-restaurant").empty();
+        $("#hotel-view").empty();    
+        $("#title-hotel").empty();
         $("input").val(""); 
 
 

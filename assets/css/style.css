@@ -64,15 +64,22 @@ h5 {
 
 
 #sidebar {
+    position: relative; 
+   
+}
+
+#sidebar h3 {
     float: right; 
-    position: fixed; 
     top: 50px; 
     left: 850px; 
     font-family: 'Permanent Marker', cursive;
-    font-size: 30px; 
+    font-size: 50px; 
+    opacity: 0.7;
+    padding-bottom: 15%;
+    padding-right: 15%; 
     
-
 }
+
 
 #forms {
     margin: 5% 15% 5% 25%;
@@ -84,6 +91,7 @@ h5 {
 }
 
 #night{
+    opacity: 0.3;
     font-size: 250px;
     margin-left: 100px;
     color: black;
@@ -92,7 +100,7 @@ h5 {
 }
 
 #out{
-
+    opacity: 0.8;
     font-size: 200px;
     margin-left:500px;
     color: white;
